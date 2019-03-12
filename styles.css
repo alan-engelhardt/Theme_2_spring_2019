@@ -5,7 +5,21 @@ div{
     margin: 1em;
 }
 
-#box1{
-    transition: background-color 1s, width .5s 1s;
-    transition-timing-function: cubic-bezier(.46,-1.06,.54,.26);
+
+@keyframes change{
+    25%{
+        background-color: blue;
+        transform: translate(80vw) rotate(-90deg);
+    }
+    50%{
+        background-color: orange;
+        transform: translate(80vw, 80vh) rotate(-180deg);
+    }
+    75%{
+        background-color: green;
+        transform: translate(0, 80vh)  rotate(-270deg);
+    }
+    100%{
+        transform:  rotate(-359deg)
+    }
 }
