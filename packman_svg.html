@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Pacman</title>
+    <style>
+        #bane {
+            position: relative;
+            border: 1px solid;
+            width: 80vw;
+            height: 80vh;
+            margin: 8vh auto;
+            overflow: hidden;
+        }
+
+        #wrap {
+            width: 10%;
+            display: grid;
+            grid-template-columns: 1fr;
+            transform: translate(0, 0);
+            transform-origin: center;
+        }
+
+        #top,
+        #bund {
+            fill: orange;
+            transform-origin: center;
+        }
+
+        #top {
+            transform: rotate(-45deg);
+        }
+
+        #bund {
+            transform: rotate(45deg);
+        }
+
+        .tyg {
+            animation: tyg .3s infinite alternate linear;
+        }
+
+        @keyframes tyg {
+            to {
+                transform: rotate(0);
+            }
+        }
+
+        .spot {
+            position: absolute;
+            width: 2vw;
+            height: 2vw;
+            background-color: green;
+            border-radius: 50%;
+            z-index: -10;
+        }
+
+        #spot1{
+            top: 40%;
+            left: 40%;
+        }
+        #spot2{
+            top: 60%;
+            left: 70%;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="bane">
+        <svg id="wrap" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 100 100">
+            <path id="top" d="M100,50 A50,50 0 0,0 0,50" />
+            <path id="bund" d="M0,50 A50,50 0 0,0 100,50" />
+        </svg>
+        <div id="spot1" class="spot"></div>
+        <div id="spot2" class="spot"></div>
+    </div>
+    <script>
+        const bane = document.querySelector("#bane");
+        const pacman = document.querySelector("#wrap");
+        const box1 = document.querySelector("#top");
+        const box2 = document.querySelector("#bund");
+        const spot = document.querySelector(".spot");
+        let x = 0;
+        let y = 0;
+        let r = 0;
+        let int;
+        let speed = 50;
+
+        window.addEventListener("keydown", styrDen);
+
+        function styrDen(e) {
+            box1.classList.add("tyg");
+            box2.classList.add("tyg");
+            clearInterval(int);
+            switch (e.key) {
+                case "ArrowLeft":
+                    r = 180;
+                    int = setInterval(function() {
+                        x -= 5
+                        flyt();
+                    }, speed);
+                    break;
+                case "ArrowRight":
+                    r = 0;
+                    int = setInterval(function() {
+                        x += 5
+                        flyt();
+                    }, speed);
+                    break;
+                case "ArrowUp":
+                    r = -90;
+                    int = setInterval(function() {
+                        y -= 5
+                        flyt();
+                    }, speed);
+                    break;
+                case "ArrowDown":
+                    r = 90;
+                    int = setInterval(function() {
+                        y += 5
+                        flyt();
+                    }, speed);
+                    break;
+                default:
+                    stop();
+            }
+        }
+
+        function flyt() {
+            if (x > bane.offsetWidth) {
+                x = -50;
+            }
+            if (x < -50) {
+                x = bane.offsetWidth;
+            }
+            if (y > bane.offsetHeight) {
+                y = -50;
+            }
+            if (y < -50) {
+                y = bane.offsetHeight;
+            }
+            pacman.style.transform = "translate(" + x + "px, " + y + "px) rotate(" + r + "deg";
+            if (x < spot.offsetLeft &&
+                spot.offsetLeft < x + pacman.getBBox().width / 3 &&
+                y  < spot.offsetTop &&
+                spot.offsetTop < y + pacman.getBBox().height / 3) {
+                spot.style.display = "none";
+            }
+        }
+
+        console.log(spot.offsetLeft, spot.offsetTop)
+
+        function stop() {
+            console.log(x, y, pacman.getBBox().width + x, pacman.getBBox().height + y)
+            clearInterval(int);
+            box1.classList.remove("tyg");
+            box2.classList.remove("tyg");
+        }
+    </script>
+</body></html>
