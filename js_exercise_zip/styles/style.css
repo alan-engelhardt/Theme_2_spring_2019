@@ -1,0 +1,103 @@
+/* style.css */
+
+@import url('https://fonts.googleapis.com/css?family=Heebo|Rajdhani|Work+Sans:700');
+
+
+/* ------------------- */
+/* General grid layout */
+/* ------------------- */
+
+main#imagesection {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 15px;
+    grid-template-areas:
+        "left middle right";
+}
+#left {
+    grid-area: left;
+}
+#middle {
+    grid-area: middle;
+}
+#right {
+    grid-area: right;
+}
+
+footer {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-gap: 35px;
+    grid-template-areas:
+        "c1 c2 c3 c4 c5";
+}
+#bt1, #bt2, #bt3, #bt4, #bt5, #bt6 {
+    width: 100%;
+    background-color: coral;
+}
+#c1 {
+    grid-area: c1;
+}
+#c2 {
+    grid-area: c2;
+}
+#c3 {
+    grid-area: c3;
+}
+#c4 {
+    grid-area: c4;
+}
+#c5 {
+    grid-area: c5;
+}
+#c6 {
+    grid-area: c6;
+}
+
+
+
+/* ----------------- */
+/* header and footer */
+/* ----------------- */
+
+header {
+    text-align: center;
+}
+
+header > h1 {
+    font-family: 'Work Sans', sans-serif;
+    font-size: 2em;
+}
+
+header > h2 {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 1.5em;
+
+}
+
+/* -------------- */
+/* General styles */
+/* -------------- */
+
+p, form, a, ul, li, .notes {
+    font-family: 'Heebo', sans-serif;
+    background-color: floralwhite;
+}
+
+a {
+    font-size: .6em;
+}
+#ref p, a {
+    background-color: antiquewhite;
+    color: darkslategrey;
+}
+#ref a {
+     font-size: 1em;
+}
+ul {
+    line-height: 2em;
+}
+.notes {
+    width: 50%;
+    margin: 0 auto;
+}

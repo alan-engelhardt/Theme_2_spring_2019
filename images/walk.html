@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>t</title>
+    <style>
+        #bg {
+            position: relative;
+            width: 62vw;
+            height: 40vw;
+            top: 10vw;
+            left: 10vw;
+            background-image: url(images/tree_grass_2.gif);
+            background-size: 200%;
+            animation: moveBG 10s linear infinite;
+        }
+
+        #man {
+            position: absolute;
+            bottom: 10px;
+            left: 40%;
+            height: 16vw; /* height/width = height/width of one frame ( = aspect ratio ) */
+            width: 12vw; /* Use the same unit as for height */
+            background-size: 800%; /* 100 x the number of frames in the sprite */
+            background-image: url(images/walk_sprite.png);
+            animation: walk 1s steps(8) infinite;
+        }
+
+        @keyframes walk {
+            to {
+                background-position: -800%; /* same as background-size ( +/- defines the direction ) */
+            }
+        }
+
+        @keyframes moveBG {
+            to {
+                background-position: 200% 0;
+            }
+        }
+
+
+    </style>
+</head>
+
+<body>
+    <div id="bg">
+        <div id="wrap">
+            <div id="man"></div>
+        </div>
+    </div>
+</body>
+
+</html>

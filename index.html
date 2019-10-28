@@ -8,18 +8,26 @@
 </head>
 
 <body>
-    <main>
-        <section>
-            <h1>Animation</h1>
-            <div id="box1"></div>
-        </section>
-    </main>
+   <h1>Text 1</h1>
+   <h1>Text 2</h1>
+    <div id="box1"></div>
+    <div id="box2"></div>
     <script>
-        let firstname = "Alan";
-        let lastname = "Engelhardt";
-        let peter = firstname+" "+lastname;
+        const mybox = document.querySelector("#box2");
 
-        console.log(peter);
+        const header = document.querySelector("h1");
+
+        let name = "Alan";
+        let lastName = "Engelhardt";
+
+        mybox.addEventListener("click", runAnimation)
+
+        function runAnimation(){
+            console.log(this)
+            mybox.classList.toggle("animate");
+            header.textContent=name+" "+lastName;
+        }
+
     </script>
 </body>
 

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>random circles</title>
+    <style>
+        body{
+            padding: 0;
+            margin: 0;
+        }
+        svg {
+            width: 100vw;
+            height: 100vh;
+            position: fixed;
+        }
+    </style>
+</head>
+
+<body>
+    <svg></svg>
+
+    <script>
+        const svg = document.querySelector("svg");
+
+        for(let i=0; i<200; i++){
+            const newCircle = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+            newCircle.setAttribute("cx", Math.random()*window.innerWidth);
+            newCircle.setAttribute("cy", Math.random()*window.innerHeight);
+            newCircle.setAttribute("r", Math.random()*50+10);
+            newCircle.setAttribute("fill", "hsla("+Math.random()*360+", 100%, 50%, 50%)");
+            svg.appendChild(newCircle);
+        }
+    </script>
+
+</body>
+
+</html>

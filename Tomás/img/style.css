@@ -1,0 +1,193 @@
+@keyframes jump {
+  0% {
+    bottom: 60px; }
+  30% {
+    bottom: 80px; }
+  70% {
+    bottom: 90px; }
+  100% {
+    bottom: 60px; } }
+
+@keyframes taxi {
+  10% {
+    transform: translateX(-800px); }
+  25% {
+    transform: translateX(-810px); }
+  30% {
+    transform: translateX(-800px); }
+  60% {
+    transform: translateX(-800px); }
+  80% {
+    transform: translateX(-2600px);
+    opacity: 1; }
+  84% {
+    opacity: 0; }
+  100% {
+    opacity: 0; } }
+
+@keyframes lambo {
+  to {
+    transform: translateX(2500px); } }
+
+@keyframes killguy {
+  5% {
+    transform: translateX(1100px); }
+  20% {
+    transform: translateX(1100px); }
+  40% {
+    transform: translateX(1100px); }
+  83% {
+    transform: translateX(1100px); }
+  84% {
+    opacity: 0; }
+  100% {
+    opacity: 0; } }
+
+@keyframes kill {
+  5% {
+    transform: translateY(60px); }
+  20% {
+    transform: translateY(60px); }
+  24% {
+    transform: rotate(80deg) translateX(45px) translateY(10px); }
+  26% {
+    transform: translateX(45px) translateY(4px) rotate(80deg); }
+  26% {
+    transform: translateX(45px) translateY(60px) rotate(80deg); }
+  50% {
+    transform: translateX(45px) translateY(80px) rotate(80deg); }
+  60% {
+    transform: translateX(45px) translateY(90px) rotate(80deg); }
+  70% {
+    transform: translateX(45px) translateY(90px) rotate(80deg); }
+  80% {
+    transform: translateX(45px) translateY(90px) rotate(80deg);
+    opacity: 1; }
+  84% {
+    transform: translateX(45px) translateY(60px) rotate(80deg);
+    opacity: 0; }
+  100% {
+    transform: translateX(45px) translateY(60px) rotate(80deg);
+    opacity: 0; } }
+
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit; }
+
+html {
+  font-size: 62.5%; }
+
+body {
+  box-sizing: border-box; }
+
+body {
+  font-family: "Helvetica", sans-serif;
+  /* font-size: 16px; */
+  line-height: 1.7;
+  padding: 3rem; }
+
+.section-animation {
+  background-image: url("../img/bg-city.jpg");
+  background-position: center;
+  height: 585px;
+  position: relative;
+  overflow: hidden; }
+  .section-animation__buttons {
+    height: 100%;
+    width: 20%;
+    background-color: rgba(255, 255, 255, 0.6);
+    padding: 1rem;
+    z-index: 999;
+    position: absolute; }
+    .section-animation__buttons--btn {
+      width: 100%;
+      height: 7%;
+      border: none;
+      background-color: #a7d223;
+      color: white;
+      font-size: 1.7rem;
+      cursor: pointer;
+      border-radius: 3px;
+      box-shadow: 0 1rem 4rem rgba(0, 0, 0, 0.3);
+      transition: .5s; }
+    .section-animation__buttons--btn:hover {
+      background-color: #346820; }
+    .section-animation__buttons--btn:active {
+      box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.5); }
+    .section-animation__buttons--btn:not(:last-child) {
+      margin-bottom: 15px; }
+    .section-animation__buttons--btn:focus {
+      border: none;
+      outline: none; }
+  .section-animation__guy {
+    display: inline-block;
+    position: absolute;
+    bottom: 60px;
+    right: 280px;
+    transition: all; }
+  .section-animation__taxi {
+    position: absolute;
+    bottom: 0;
+    right: -700px;
+    transition: all ease-in; }
+  .section-animation__lambo {
+    position: absolute;
+    bottom: -30px;
+    z-index: 35;
+    transition: all ease-in;
+    left: -500px; }
+
+.animation-jump {
+  animation: jump .5s ease-out; }
+
+.animation-jumping {
+  animation: jump .5s infinite; }
+
+.animation-kill {
+  animation: kill 9s ease-out; }
+
+.callTaxi {
+  animation: taxi 5s ease; }
+
+.getInTaxi {
+  transform: scale(0);
+  transition: all .2s linear 1.5s; }
+
+.moveCar {
+  animation: lambo 2.7s infinite; }
+
+.killguy {
+  animation: killguy 9s ease-in 1.3s; }
+
+.mirror {
+  transform: scaleX(-1);
+  transition: all .8s ease-in-out; }
+
+.row {
+  max-width: 114rem;
+  margin: 0 auto; }
+  .row:not(:last-child) {
+    margin-bottom: 8rem; }
+  .row::after {
+    content: "";
+    display: table;
+    clear: both; }
+  .row [class^="col-"] {
+    float: left; }
+    .row [class^="col-"]:not(:last-child) {
+      margin-right: 6rem; }
+  .row .col-1-of-2 {
+    width: calc((100% - 6rem) / 2); }
+  .row .col-1-of-3 {
+    width: calc((100% - 2 * 6rem) / 3); }
+  .row .col-2-of-3 {
+    width: calc(2 * ((100% - 2 * 6rem) / 3) + 6rem); }
+  .row .col-1-of-4 {
+    width: calc((100% - 3 * 6rem) / 4); }
+  .row .col-2-of-4 {
+    width: calc(2 * ((100% - 3 * 6rem) / 4) + 6rem); }
+  .row .col-3-of-4 {
+    width: calc(3 * ((100% - 3 * 6rem) / 4) + 2 * 6rem); }

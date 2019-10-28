@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>random colors</title>
+    <style>
+        body {
+            box-sizing: border-box;
+            color:
+        }
+
+        main {
+            display: grid;
+            grid-template-columns: repeat(3, 10vw);
+            grid-auto-rows: 10vw;
+            grid-gap: 1px;
+            margin-bottom: 1em;
+        }
+
+        div {
+            width: 100%;
+            height: 100%;
+            transition: .2s;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Hit red boxes, NO others.</h1>
+    <main>
+        <div id="box1"></div>
+        <div id="box2"></div>
+        <div id="box3"></div>
+        <div id="box4"></div>
+        <div id="box5"></div>
+        <div id="box6"></div>
+        <div id="box7"></div>
+        <div id="box8"></div>
+        <div id="box9"></div>
+    </main>
+    <button id="start-btn">Start</button>
+    <button id="stop-btn">Stop</button>
+    <h2>Time: <span id="timeDisp"></span> Score: <span id="result">0</span></h2>
+
+    <script>
+        const boxes = document.querySelectorAll("div");
+        const startBtn = document.querySelector("#start-btn");
+        const stopBtn = document.querySelector("#stop-btn");
+        const timeDisp = document.querySelector("#timeDisp");
+        const result = document.querySelector("#result");
+        const colors = ["purple", "green", "blue", "orange", "red", "yellow", "aqua", "chartreuse", "darkslateblue"];
+        let timer = 0,
+            hit = 0,
+            time = 10;
+
+        timeDisp.textContent = time;
+        boxes.forEach(prepare);
+
+        startBtn.addEventListener("click", start);
+        stopBtn.addEventListener("click", stop);
+
+        function start() {
+            timeDisp.textContent = time;
+            console.log(timer);
+            if (!timer) {
+                timer = setInterval(run, 1000);
+            }
+        }
+
+        function stop() {
+            clearInterval(timer);
+            timer = 0;
+            time = 10;
+        }
+
+        function prepare(box, i) {
+            box.style.backgroundColor = colors[i];
+            box.addEventListener("click", boxClicked);
+        }
+
+        function run() {
+            time--;
+            boxes.forEach(box => {
+                const i = Math.floor(Math.random() * colors.length);
+                box.style.backgroundColor = colors[i];
+            });
+            timeDisp.textContent = time;
+            if (time < 1) {
+                stop();
+                timeDisp.textContent = "Time is up!";
+            }
+        }
+
+        function boxClicked() {
+            if (this.style.backgroundColor == "red") {
+                hit++;
+            } else {
+                hit--;
+            }
+            result.textContent = hit;
+        }
+
+    </script>
+</body>
+
+</html>

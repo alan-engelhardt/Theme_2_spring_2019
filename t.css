@@ -1,0 +1,25 @@
+#hero{
+    width: 100px;
+    height: 100px;
+    background: orange;
+}
+
+.flash{
+    animation: flash 1s infinite;
+}
+
+@keyframes flash{
+    50%{
+        opacity: 0.1;
+    }
+}
+
+.grow{
+    animation: grow 1s infinite;
+}
+
+@keyframes grow{
+    50%{
+        transform: scale(.5);
+    }
+}

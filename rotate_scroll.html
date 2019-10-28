@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Rotating logo</title>
+    <style>
+        #logo{
+            box-sizing: border-box;
+            position: fixed;
+            top: 1em;
+            left: 1em;
+            border-radius: 50%;
+            border-top: red solid 50px;
+            border-left: green solid 50px;
+            border-bottom: blue solid 50px;
+            border-right: orange solid 50px;
+        }
+
+        #spacer{
+            height: 300vh;
+        }
+    </style>
+</head>
+
+<body>
+   <div id=logo></div>
+    <div id="spacer"></div>
+    <script>
+        const logo = document.getElementById("logo");
+
+        window.addEventListener("scroll", function() {
+            logo.style.transform = "rotate(" + window.pageYOffset / 4 + "deg)";
+        });
+
+    </script>
+</body>
+
+</html>

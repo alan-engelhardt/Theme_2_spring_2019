@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>t</title>
+    <style>
+        li {
+            cursor: pointer;
+        }
+
+        .mark {
+            text-decoration: line-through;
+            color: red;
+        }
+
+    </style>
+</head>
+
+<body>
+    <h1>To do list</h1>
+    <input type="text" placeholder="New task">
+    <button>Add</button>
+    <ul></ul>
+    <script>
+        const input = document.querySelector("input");
+        const button = document.querySelector("button");
+        const ul = document.querySelector("ul");
+
+        const names = ["peter", "alan", "keld", "kenny"];
+
+        names.forEach(printName);
+
+        function printName(name, index) {
+            const newLi = document.createElement("li");
+            newLi.addEventListener("click", mark);
+            newLi.textContent = "At index " + index + " we have " + name;
+            ul.appendChild(newLi);
+        }
+
+        button.addEventListener("click", addItem);
+
+        function addItem() {
+            if (input.value) {
+                const newLi = document.createElement("li");
+                newLi.addEventListener("click", mark);
+                newLi.textContent = input.value;
+                ul.appendChild(newLi);
+                input.value = null;
+            }
+        }
+
+        function mark() {
+            console.log(this);
+            this.classList.toggle("mark");
+            this.remove();
+        }
+
+    </script>
+</body>
+
+</html>

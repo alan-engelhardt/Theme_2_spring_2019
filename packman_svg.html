@@ -7,11 +7,13 @@
     <style>
         #bane {
             position: relative;
-            border: 1px solid;
+            border: 5px solid yellow;
             width: 80vw;
             height: 80vh;
             margin: 8vh auto;
             overflow: hidden;
+            background-color: black;
+            z-index: -20;
         }
 
         #wrap {
@@ -24,7 +26,7 @@
 
         #top,
         #bund {
-            fill: orange;
+            fill: yellow;
             transform-origin: center;
         }
 
@@ -50,18 +52,28 @@
             position: absolute;
             width: 2vw;
             height: 2vw;
-            background-color: green;
+            background-color: deepskyblue;
             border-radius: 50%;
             z-index: -10;
         }
 
-        #spot1{
+        #spot1 {
             top: 40%;
             left: 40%;
         }
-        #spot2{
-            top: 60%;
+
+        #spot2 {
+            top: 80%;
             left: 70%;
+        }
+
+        #spot3 {
+            top: 60%;
+            left: 20%;
+        }
+
+        .hide{
+            opacity: 0;
         }
     </style>
 </head>
@@ -74,18 +86,19 @@
         </svg>
         <div id="spot1" class="spot"></div>
         <div id="spot2" class="spot"></div>
+        <div id="spot3" class="spot"></div>
     </div>
     <script>
         const bane = document.querySelector("#bane");
         const pacman = document.querySelector("#wrap");
         const box1 = document.querySelector("#top");
         const box2 = document.querySelector("#bund");
-        const spot = document.querySelector(".spot");
+        const spots = document.querySelectorAll(".spot");
         let x = 0;
         let y = 0;
         let r = 0;
         let int;
-        let speed = 50;
+        let speed = 40;
 
         window.addEventListener("keydown", styrDen);
 
@@ -140,19 +153,27 @@
             if (y < -50) {
                 y = bane.offsetHeight;
             }
+
             pacman.style.transform = "translate(" + x + "px, " + y + "px) rotate(" + r + "deg";
-            if (x < spot.offsetLeft &&
-                spot.offsetLeft < x + pacman.getBBox().width / 3 &&
-                y  < spot.offsetTop &&
-                spot.offsetTop < y + pacman.getBBox().height / 3) {
-                spot.style.display = "none";
-            }
+
+            spots.forEach(spot => {
+                if (x - 10 < spot.offsetLeft &&
+                    spot.offsetLeft < x - 10 + pacman.getBBox().width / 2 &&
+                    y - 10 < spot.offsetTop &&
+                    spot.offsetTop < y - 10 + pacman.getBBox().height / 2) {
+                    spot.style.display = "none";
+                    //spot.classList.add("hide");
+                    moveSpot(spot);
+                }
+            })
+
         }
 
-        console.log(spot.offsetLeft, spot.offsetTop)
+        function moveSpot(spot){
+            console.log(spot);
+        }
 
         function stop() {
-            console.log(x, y, pacman.getBBox().width + x, pacman.getBBox().height + y)
             clearInterval(int);
             box1.classList.remove("tyg");
             box2.classList.remove("tyg");

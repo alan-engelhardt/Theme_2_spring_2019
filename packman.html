@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Packman</title>
+    <style>
+        .wrap {
+            z-index: 10;
+            border-radius: 50%;
+            overflow: hidden;
+            width: 100px;
+            height: 100px;
+            display: grid;
+            grid-template-columns: 1fr;
+            transform: translate(0, 0);
+            transform-origin: center;
+            /*            transition: all .1s;*/
+        }
+
+        .box1,
+        .box2 {
+            width: 100%;
+            height: 50px;
+            background-color: orange;
+        }
+
+        .box1 {
+            transform: rotate(-50deg);
+            transform-origin: bottom;
+        }
+
+        .box2 {
+            transform: rotate(50deg);
+            transform-origin: top;
+        }
+
+        .tyg {
+            animation: tyg .3s infinite alternate linear;
+        }
+
+        @keyframes tyg {
+            to {
+                transform: rotate(0deg);
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+        <div class="box1"></div>
+        <div class="box2"></div>
+    </div>
+    <script>
+        const packman = document.querySelector(".wrap");
+        const box1 = document.querySelector(".box1");
+        const box2 = document.querySelector(".box2");
+        window.addEventListener("keydown", styrDen);
+        //window.addEventListener("keyup", stop);
+        let x = 0;
+        let y = 0;
+        let r = 0;
+        let int;
+        let speed = 20;
+
+        console.log(window.innerWidth, window.innerHeight)
+
+        function styrDen(e) {
+            box1.classList.add("tyg");
+            box2.classList.add("tyg");
+            clearInterval(int);
+            switch (e.key) {
+                case "ArrowLeft":
+                    r = 180;
+                    int = setInterval(function() {
+                        x -= 5
+                        flyt();
+                    }, speed);
+                    break;
+                case "ArrowRight":
+                    r = 0;
+                    int = setInterval(function() {
+                        x += 5
+                        flyt();
+                    }, speed);
+                    break;
+                case "ArrowUp":
+                    r = -90;
+                    int = setInterval(function() {
+                        y -= 5
+                        flyt();
+                    }, speed);
+                    break;
+                case "ArrowDown":
+                    r = 90;
+                    int = setInterval(function() {
+                        y += 5
+                        flyt();
+                    }, speed);
+                    break;
+                default:
+                    stop();
+            }
+        }
+
+        function flyt() {
+            if (x > window.innerWidth) {
+                x = -120;
+            }
+            if (x < -120) {
+                x = window.innerWidth;
+            }
+            if (y > window.innerHeight) {
+                y = -120;
+            }
+            if (y < -120) {
+                y = window.innerHeight;
+            }
+            packman.style.transform = "translate(" + x + "px, " + y + "px) rotate(" + r + "deg";
+        }
+
+        function stop() {
+            clearInterval(int);
+            box1.classList.remove("tyg");
+            box2.classList.remove("tyg");
+        }
+
+    </script>
+</body>
+
+</html>

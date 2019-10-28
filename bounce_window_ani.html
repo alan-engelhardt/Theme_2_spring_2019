@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>T</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        .x {
+            width: 100px;
+            height: 100px;
+            animation: x 2.3s alternate infinite linear;
+        }
+
+        .y {
+            width: 100px;
+            height: 100px;
+            background: orange;
+            border-radius: 50%;
+            animation: y 1.1s alternate infinite linear;
+        }
+
+        @keyframes x {
+            to {
+                transform: translateX(calc(100vw - 100%));
+            }
+        }
+
+        @keyframes y {
+            to {
+                transform: translateY(calc(100vh - 100%));
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="x">
+        <div class="y"></div>
+    </div>
+</body></html>
