@@ -1,25 +1,17 @@
-#hero{
-    width: 100px;
-    height: 100px;
-    background: orange;
+.box{
+    width: 120px;
+    height: 160px;
+    background-image: url(images/walk_sprite.png);
+    text-align: center;
+    line-height: 100px;
 }
 
-.flash{
-    animation: flash 1s infinite;
+.rot{
+    animation: rot 1s infinite;
 }
 
-@keyframes flash{
+@keyframes rot {
     50%{
-        opacity: 0.1;
-    }
-}
-
-.grow{
-    animation: grow 1s infinite;
-}
-
-@keyframes grow{
-    50%{
-        transform: scale(.5);
+        transform: rotate(45deg);
     }
 }
