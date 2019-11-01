@@ -15,5 +15,6 @@ function animate() {
         this.classList.add("active");
         hero.style.setProperty("--ani", this.dataset.ani);
         hero.style.setProperty("--speed", this.dataset.speed);
+        hero.style.setProperty("--timing", this.dataset.timing);
     }
 }

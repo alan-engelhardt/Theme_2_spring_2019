@@ -8,7 +8,7 @@
     line-height: 100px;
     margin: 2em;
     z-index: -10;
-    animation: walk 1s steps(8) infinite, var(--ani) var(--speed, 1s) infinite;
+    animation: var(--ani) var(--speed, 1s) var(--timing) infinite;
 /*    animation: walk 1s steps(8) infinite;*/
 }
 
@@ -23,11 +23,8 @@
 }
 
 @keyframes rot {
-    33%{
-        transform: rotate(-45deg);
-    }
-    66%{
-        transform: rotate(45deg);
+    to{
+        transform: rotate(359deg);
     }
 }
 
