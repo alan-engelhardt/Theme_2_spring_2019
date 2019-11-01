@@ -1,17 +1,46 @@
-.box{
+#hero{
+    --ani: none;
+    --speed: 0;
     width: 120px;
     height: 160px;
     background-image: url(images/walk_sprite.png);
     text-align: center;
     line-height: 100px;
+    margin: 2em;
+    z-index: -10;
+    animation: walk 1s steps(8) infinite, var(--ani) var(--speed, 1s) infinite;
+/*    animation: walk 1s steps(8) infinite;*/
 }
 
-.rot{
-    animation: rot 1s infinite;
+.active{
+    background-color: orange;
+}
+
+@keyframes walk {
+    to{
+        background-position: -800%;
+    }
 }
 
 @keyframes rot {
-    50%{
+    33%{
+        transform: rotate(-45deg);
+    }
+    66%{
         transform: rotate(45deg);
+    }
+}
+
+
+@keyframes jump {
+    50%{
+        transform: translateY(-20px);
+    }
+}
+
+
+@keyframes sc {
+    50%{
+        transform: scale(.5);
     }
 }

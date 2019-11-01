@@ -1,8 +1,19 @@
-const rotbtn = document.querySelector("#rotbtn");
-const boxElement = document.querySelector(".box");
+const btns = document.querySelectorAll("button");
+const hero = document.querySelector("#hero");
 
-rotbtn.addEventListener("click", animate);
+const walk = "walk 1s steps(8) infinite";
 
-function animate(){
-    boxElement.classList.toggle("rot");
+btns.forEach(btn => btn.addEventListener("click", animate));
+
+function animate() {
+    if (this.classList.contains("active")) {
+        this.classList.remove("active");
+        hero.style.setProperty("--ani", "none");
+        hero.style.setProperty("--speed", 0);
+    } else {
+        btns.forEach(btn => btn.classList.remove("active"));
+        this.classList.add("active");
+        hero.style.setProperty("--ani", this.dataset.ani);
+        hero.style.setProperty("--speed", this.dataset.speed);
+    }
 }
